@@ -1,0 +1,73 @@
+package io.github.sma1lo.pecan.collections.list;
+
+public class ShortList {
+    private short[] elements;
+    private int size;
+
+    public ShortList(int initialCapacity) {
+        if (initialCapacity < 0) {
+            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
+        }
+
+        elements = new short[initialCapacity];
+
+    }
+
+    public ShortList() {
+        this(10);
+    }
+
+    public void add(short value) {
+        if (size == elements.length) {
+            grow();
+        }
+
+        elements[size++] = value;
+    }
+
+    public boolean remove(short value) {
+        for (int i = 0; i < size; i++) {
+            if (elements[i] == value) {
+                int moved = size - i - 1;
+
+                if (moved > 0) {
+                    System.arraycopy(elements, i + 1, elements, i, moved);
+                }
+
+                size--;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public short get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(index);
+        }
+
+        return elements[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public void clear() {
+        size = 0;
+    }
+
+    private void grow() {
+        int newCapacity = elements.length == 0 ? 10 : elements.length * 2;
+
+        short[] newElements = new short[newCapacity];
+        System.arraycopy(elements, 0, newElements, 0, size);
+
+        elements = newElements;
+    }
+}
