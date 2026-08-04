@@ -1,4 +1,4 @@
-package collections.list;
+package io.github.sma1lo.pecan.collections.list;
 
 public class IntList {
     private int[] elements;

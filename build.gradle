@@ -1,19 +1,8 @@
-plugins {
-    id 'java'
-}
+allprojects {
+    group = 'io.github.sma1lo'
+    version = '0.1.0'
 
-group = 'io.pecan'
-version = '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
 }
