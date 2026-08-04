@@ -1,22 +1,23 @@
 package io.github.sma1lo.pecan.collections.list;
 
-public class IntList {
-    private int[] elements;
+public class LongList {
+    private long[] elements;
     private int size;
 
-    public IntList(int initialCapacity) {
+    public LongList(int initialCapacity) {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
         }
 
-        elements = new int[initialCapacity];
+        elements = new long[initialCapacity];
+
     }
 
-    public IntList() {
+    public LongList() {
         this(10);
     }
 
-    public void add(int value) {
+    public void add(long value) {
         if (size == elements.length) {
             grow();
         }
@@ -24,7 +25,7 @@ public class IntList {
         elements[size++] = value;
     }
 
-    public boolean remove(int value) {
+    public boolean remove(long value) {
         for (int i = 0; i < size; i++) {
             if (elements[i] == value) {
                 int moved = size - i - 1;
@@ -41,7 +42,7 @@ public class IntList {
         return false;
     }
 
-    public int get(int index) {
+    public long get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -64,7 +65,7 @@ public class IntList {
     private void grow() {
         int newCapacity = elements.length == 0 ? 10 : elements.length * 2;
 
-        int[] newElements = new int[newCapacity];
+        long[] newElements = new long[newCapacity];
         System.arraycopy(elements, 0, newElements, 0, size);
 
         elements = newElements;
